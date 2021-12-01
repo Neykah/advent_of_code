@@ -5,12 +5,18 @@ INPUT_PATH = Path("day_1/input.txt")
 
 
 def count_nb_increase(input_data: list[int]) -> int:
+    """Count the number of times an element in the input data has a higher value
+    than the previous element
+    """
+
     diff = compute_rolling_diff(input_data)
     result = np.count_nonzero(diff > 0)
     return result
 
 
 def compute_rolling_diff(input_data: list[int]) -> np.ndarray:
+    """Compute the difference between successive elements of the input iterable."""
+    
     diff = []
     for i, d in enumerate(input_data):
         if i == 0:
@@ -21,6 +27,12 @@ def compute_rolling_diff(input_data: list[int]) -> np.ndarray:
 
 
 def sliding_sum(data: list[int], win_size: int = 3) -> np.ndarray:
+    """Compute the sliding sum over a list of integer.
+
+    The sliding sum is a list where each element is composed of the sum of {win_size}
+    consecutive elements in the original iterable.
+    """
+
     res = []
     for i, _ in enumerate(data):
         if i < win_size - 1:
@@ -30,6 +42,8 @@ def sliding_sum(data: list[int], win_size: int = 3) -> np.ndarray:
 
 
 def load_data(input_path: Path) -> list[int]:
+    """Extract data from an input text file."""
+
     with open(input_path, "r") as fp:
         input_data = [int(line.strip("\n")) for line in fp.readlines()]
     return input_data
