@@ -6,7 +6,7 @@ INPUT_PATH = Path("day_1/input.txt")
 
 def count_nb_increase(input_data: list[int]) -> int:
     diff = compute_rolling_diff(input_data)
-    result = np.count_nonzero(diff >= 0)
+    result = np.count_nonzero(diff > 0)
     return result
 
 
@@ -20,6 +20,15 @@ def compute_rolling_diff(input_data: list[int]) -> np.ndarray:
     return diff
 
 
+def sliding_sum(data: list[int], win_size: int = 3) -> np.ndarray:
+    res = []
+    for i, _ in enumerate(data):
+        if i < win_size - 1:
+            continue
+        res.append(sum(data[i - win_size + 1 : i + 1]))
+    return res
+
+
 def load_data(input_path: Path) -> list[int]:
     with open(input_path, "r") as fp:
         input_data = [int(line.strip("\n")) for line in fp.readlines()]
@@ -28,8 +37,11 @@ def load_data(input_path: Path) -> list[int]:
 
 solve_problem_1 = count_nb_increase
 
+
 def solve_problem_2(input_data: list[int]) -> int:
-    ...
+    win_sum = sliding_sum(input_data)
+    return count_nb_increase(win_sum)
+
 
 if __name__ == "__main__":
     input_data = load_data(INPUT_PATH)
@@ -38,3 +50,4 @@ if __name__ == "__main__":
     print("Result of problem 1:", result_1)
 
     result_2 = solve_problem_2(input_data)
+    print("Result of problem 2:", result_2)

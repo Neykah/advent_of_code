@@ -16,7 +16,10 @@ def test_rolling_diff(data):
 
 
 def test_problem1(data):
-    assert d1.count_nb_increase(data) == 7
+    assert d1.solve_problem_1(data) == 7
+
+def test_problem2(data):
+    assert d1.solve_problem_2(data) == 5
 
 def test_data_load(data):
     assert len(data) == 10
