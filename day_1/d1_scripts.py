@@ -26,7 +26,15 @@ def load_data(input_path: Path) -> list[int]:
     return input_data
 
 
+solve_problem_1 = count_nb_increase
+
+def solve_problem_2(input_data: list[int]) -> int:
+    ...
+
 if __name__ == "__main__":
     input_data = load_data(INPUT_PATH)
-    result = count_nb_increase(input_data)
-    print(result)
+
+    result_1 = solve_problem_1(input_data)
+    print("Result of problem 1:", result_1)
+
+    result_2 = solve_problem_2(input_data)

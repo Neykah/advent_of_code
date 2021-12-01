@@ -1,4 +1,4 @@
-import day_1.problem_1 as p1
+import day_1.d1_scripts as d1
 from pathlib import Path
 import pytest
 
@@ -7,17 +7,23 @@ PLACEHOLDER_PATH = Path("tests/day_1/placeholder.txt")
 
 @pytest.fixture(scope="module")
 def data():
-    return p1.load_data(PLACEHOLDER_PATH)
+    return d1.load_data(PLACEHOLDER_PATH)
 
 
 def test_rolling_diff(data):
-    diff = p1.compute_rolling_diff(data)
+    diff = d1.compute_rolling_diff(data)
     assert len(diff) == len(data) - 1
 
 
 def test_problem1(data):
-    assert p1.count_nb_increase(data) == 7
-
+    assert d1.count_nb_increase(data) == 7
 
 def test_data_load(data):
     assert len(data) == 10
+
+def test_sliding_sum(data):
+    sliding_sum = d1.sliding_sum(data)
+    assert len(sliding_sum) == len(data) - 2
+    assert sliding_sum[1] > sliding_sum[0]
+    assert sliding_sum[0] == 607
+    assert sliding_sum[1] == 618
