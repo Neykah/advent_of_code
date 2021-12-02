@@ -30,6 +30,27 @@ class Submarine:
             self.follow_instruction(instruction)
 
 
+class ComplexSubmarine(Submarine):
+    def __init__(self, x_pos: int = 0, depth: int = 0, aim: int = 0) -> None:
+        super().__init__(x_pos, depth)
+        self.aim = aim
+
+    def process_down(self, intensity: int) -> None:
+        self.aim += intensity
+
+    def process_forward(self, intensity: int) -> None:
+        self.move_forward(intensity)
+        self.dive(self.aim * intensity)
+
+    def follow_instruction(self, instruction: Instruction) -> None:
+        func_map = {
+            "forward": self.process_forward,
+            "down": self.process_down,
+            "up": lambda x: self.process_down(-x),
+        }
+        func_map[instruction.direction](instruction.intensity)
+
+
 def load_data(input_path: Path) -> list[Instruction]:
     def extract_instruction(line: str) -> Instruction:
         direction, intensity = line.strip("\n").split(" ")
@@ -39,16 +60,20 @@ def load_data(input_path: Path) -> list[Instruction]:
         return [extract_instruction(line) for line in fp.readlines()]
 
 
-def solve_p1(instructions: list[Instruction]):
-    sub = Submarine()
+def make_sub_follow(sub: Submarine, instructions: list[Instruction]) -> int:
     sub.follow_all_instructions(instructions)
     res = sub.x_pos * sub.depth
     return res
 
 
+def solve_p1(instructions: list[Instruction]):
+    sub = Submarine()
+    return make_sub_follow(sub, instructions)
+
+
 def solve_p2(instructions: list[Instruction]):
-    res = None
-    return res
+    sub = ComplexSubmarine()
+    return make_sub_follow(sub, instructions)
 
 
 if __name__ == "__main__":

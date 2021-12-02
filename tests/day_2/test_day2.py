@@ -68,3 +68,8 @@ def test_follow_all_instructions(instructions):
 def test_solve_p1(instructions):
     result = d2.solve_p1(instructions)
     assert result == 150
+
+
+def test_solve_p2(instructions):
+    result = d2.solve_p2(instructions)
+    assert result == 900
