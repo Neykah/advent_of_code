@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import numpy as np
 
 INPUT_PATH = Path("day_1/input.txt")
@@ -16,7 +17,7 @@ def count_nb_increase(input_data: list[int]) -> int:
 
 def compute_rolling_diff(input_data: list[int]) -> np.ndarray:
     """Compute the difference between successive elements of the input iterable."""
-    
+
     diff = []
     for i, d in enumerate(input_data):
         if i == 0:
