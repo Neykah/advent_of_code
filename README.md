@@ -16,5 +16,6 @@ I will strive to make the code as clean as possible, by following this non-exhau
 
 ## List of puzzles
 
-- [Day 1](https://github.com/Neykah/advent_of_code/tree/main/day_1): 2 stars
-- ...
+- [Day 1](https://github.com/Neykah/advent_of_code/tree/main/day_1): Sonar Reader
+- [Day 2](https://github.com/Neykah/advent_of_code/tree/main/day_2): Submarine Control
+- Day 3: ???
