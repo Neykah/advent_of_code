@@ -29,6 +29,11 @@ class Submarine:
         for instruction in instructions:
             self.follow_instruction(instruction)
 
+    def follow_and_report(self, instructions: list[Instruction]) -> int:
+        self.follow_all_instructions(instructions)
+        res = self.x_pos * self.depth
+        return res
+
 
 class ComplexSubmarine(Submarine):
     def __init__(self, x_pos: int = 0, depth: int = 0, aim: int = 0) -> None:
@@ -60,20 +65,14 @@ def load_data(input_path: Path) -> list[Instruction]:
         return [extract_instruction(line) for line in fp.readlines()]
 
 
-def make_sub_follow(sub: Submarine, instructions: list[Instruction]) -> int:
-    sub.follow_all_instructions(instructions)
-    res = sub.x_pos * sub.depth
-    return res
-
-
 def solve_p1(instructions: list[Instruction]):
     sub = Submarine()
-    return make_sub_follow(sub, instructions)
+    return sub.follow_and_report(instructions)
 
 
 def solve_p2(instructions: list[Instruction]):
     sub = ComplexSubmarine()
-    return make_sub_follow(sub, instructions)
+    return sub.follow_and_report(instructions)
 
 
 if __name__ == "__main__":
