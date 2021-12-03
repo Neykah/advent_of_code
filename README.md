@@ -16,6 +16,6 @@ I will strive to make the code as clean as possible, by following this non-exhau
 
 ## List of puzzles
 
-- [Day 1](https://github.com/Neykah/advent_of_code/tree/main/day_1): Sonar Reader
-- [Day 2](https://github.com/Neykah/advent_of_code/tree/main/day_2): Submarine Control
+- Day 1 - Sonar Reader: [instructions](https://adventofcode.com/2021/day/1), [solution](https://github.com/Neykah/advent_of_code/tree/main/day_1), [tests](https://github.com/Neykah/advent_of_code/tree/main/tests/day_1)
+- Day 2 - Submarine Control: [instructions](https://adventofcode.com/2021/day/2), [solution](https://github.com/Neykah/advent_of_code/tree/main/day_2), [tests](https://github.com/Neykah/advent_of_code/tree/main/tests/day_2)
 - Day 3: ???
