@@ -23,11 +23,10 @@ def compute_rolling_diff(input_data: list[int]) -> np.ndarray:
         if i == 0:
             continue
         diff.append(d - input_data[i - 1])
-    diff = np.array(diff)
-    return diff
+    return np.array(diff)
 
 
-def sliding_sum(data: list[int], win_size: int = 3) -> np.ndarray:
+def sliding_sum(data: list[int], win_size: int = 3) -> list[int]:
     """Compute the sliding sum over a list of integer.
 
     The sliding sum is a list where each element is composed of the sum of {win_size}
