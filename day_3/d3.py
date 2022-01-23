@@ -59,16 +59,25 @@ def read_file(pth: Path) -> np.ndarray:
     return arr
 
 
+def _core_lookup_logic(arr: np.ndarray, majority: bool) -> int:
+    col_idx = 0
+    while len(arr) > 1:
+        arr = remove_non_compliant_rows(arr, col_idx, majority=majority)
+        col_idx += 1
+    bin_array = arr[0].astype(int)
+    return _convert_bin_array_to_int(bin_array)
+
+
 def get_oxygen_generator_rating(arr: np.ndarray) -> int:
-    ...
+    return _core_lookup_logic(arr, majority=True)
 
 
 def get_co2_scrubber_rating(arr: np.ndarray) -> int:
-    ...
+    return _core_lookup_logic(arr, majority=False)
 
 
 def remove_non_compliant_rows(
-    arr: np.ndarray, col_nb: int, round_up: bool
+    arr: np.ndarray, col_nb: int, majority: bool
 ) -> np.ndarray:
     """Remove rows from the input array that do not have the majority value in their
     `col_nb`th column.
@@ -77,16 +86,19 @@ def remove_non_compliant_rows(
         arr (np.ndarray): Input binary array of shape (N, M)
         col_nb (int): Column to use to consider whether the row should be removed.
             Must be < M.
-        round_up (bool): Decides on which value should be considered majority in case of
-            equality (0 or 1).
+        majority (bool): Whether or not the majority value (True) or the minority value
+            (False) should be used in the bit criteria.
 
     Returns:
         np.ndarray: Binary array of shape (<= N, M).
     """
-    cols_majority = calculate_majority_value_in_cols(arr, round_up=round_up)
+    if majority:
+        cols_criteria = calculate_majority_value_in_cols(arr, round_up=True)
+    else:
+        cols_criteria = 1 - calculate_majority_value_in_cols(arr, round_up=True)
     rows_to_delete = []
     for row, val in enumerate(arr[:, col_nb]):
-        if val != cols_majority[col_nb]:
+        if val != cols_criteria[col_nb]:
             rows_to_delete.append(row)
 
     arr = np.delete(arr, rows_to_delete, 0)

@@ -147,3 +147,17 @@ def test_remove_2_rows_2nd_position():
     filtered_arr = d3.remove_non_compliant_rows(data, 1, round_up=False)
     assert filtered_arr.shape == (2, 3)
     assert np.array_equal(filtered_arr, np.array([[0, 0, 1], [1, 0, 1]]))
+
+
+def test_remove_2_rows_2nd_position_maj_1():
+    data = np.array(
+        [
+            [0, 1, 0],
+            [1, 1, 1],
+            [0, 0, 1],
+            [1, 0, 1],
+        ]
+    )
+    filtered_arr = d3.remove_non_compliant_rows(data, 1, round_up=True)
+    assert filtered_arr.shape == (2, 3)
+    assert np.array_equal(filtered_arr, np.array([[0, 1, 0], [1, 1, 1]]))
