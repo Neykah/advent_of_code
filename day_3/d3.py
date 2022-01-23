@@ -112,6 +112,13 @@ def p1_get_power_consumption(arr: np.ndarray) -> int:
     return gamma * epsilon
 
 
+def p2_get_life_support_rating(arr: np.ndarray) -> int:
+    oxygen_generator_rating = get_oxygen_generator_rating(arr)
+    co2_scrubber_rating = get_co2_scrubber_rating(arr)
+    return oxygen_generator_rating * co2_scrubber_rating
+
+
 if __name__ == "__main__":
     arr = read_file(INPUT_PATH)
-    print("Power consumption: ", p1_get_power_consumption(arr))
+    print("Power consumption:", p1_get_power_consumption(arr), sep="\t")
+    print("Life support rating:", p2_get_life_support_rating(arr), sep="\t")
