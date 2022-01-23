@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-import day_1.d1_scripts as d1
+import advent_of_code.day_1.d1_scripts as d1
 
 PLACEHOLDER_PATH = Path("tests/day_1/placeholder.txt")
 

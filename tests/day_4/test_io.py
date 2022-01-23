@@ -1,8 +1,9 @@
 from pathlib import Path
 
-import day_4.file_io as file_io
 import numpy as np
 import pytest
+
+import advent_of_code.day_4.file_io as file_io
 
 INPUT_PATH = Path("tests/day_4/placeholder.txt")
 

@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from day_3 import d3
+from advent_of_code.day_3 import d3
 
 INPUT_PATH = Path("tests/day_3/placeholder.txt")
 
