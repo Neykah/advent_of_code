@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 
-INPUT_PATH = Path("day_1/input.txt")
+INPUT_PATH = Path("advent_of_code/day_1/input.txt")
 
 
 def count_nb_increase(input_data: list[int]) -> int:
@@ -57,7 +57,7 @@ def solve_problem_2(input_data: list[int]) -> int:
     return count_nb_increase(win_sum)
 
 
-if __name__ == "__main__":
+def main():
     input_data = load_data(INPUT_PATH)
 
     result_1 = solve_problem_1(input_data)

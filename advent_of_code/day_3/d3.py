@@ -7,7 +7,7 @@ from pathlib import Path
 
 import numpy as np
 
-INPUT_PATH = Path("day_3/input.txt")
+INPUT_PATH = Path("advent_of_code/day_3/input.txt")
 
 
 def calculate_gamma(arr: np.ndarray) -> int:
@@ -118,7 +118,7 @@ def p2_get_life_support_rating(arr: np.ndarray) -> int:
     return oxygen_generator_rating * co2_scrubber_rating
 
 
-if __name__ == "__main__":
+def main():
     arr = read_file(INPUT_PATH)
     print("Power consumption:", p1_get_power_consumption(arr), sep="\t")
     print("Life support rating:", p2_get_life_support_rating(arr), sep="\t")

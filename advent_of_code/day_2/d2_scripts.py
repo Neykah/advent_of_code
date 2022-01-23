@@ -3,7 +3,7 @@ from pathlib import Path
 
 Instruction = namedtuple("Instruction", ["direction", "intensity"])
 
-INPUT_PATH = Path("day_2/input.txt")
+INPUT_PATH = Path("advent_of_code/day_2/input.txt")
 
 
 class Submarine:
@@ -75,7 +75,7 @@ def solve_p2(instructions: list[Instruction]):
     return sub.follow_and_report(instructions)
 
 
-if __name__ == "__main__":
+def main():
     instructions = load_data(INPUT_PATH)
     result_1 = solve_p1(instructions)
     print("Result of problem 1:", result_1)

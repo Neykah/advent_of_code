@@ -16,6 +16,12 @@ isort = "^5.10.1"
 pre-commit = "^2.16.0"
 mypy = "^0.930"
 
+[tool.poetry.scripts]
+day_1 = "advent_of_code.day_1.d1_scripts:main"
+day_2 = "advent_of_code.day_2.d2_scripts:main"
+day_3 = "advent_of_code.day_3.d3:main"
+day_4 = "advent_of_code.day_4.d4:main"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
